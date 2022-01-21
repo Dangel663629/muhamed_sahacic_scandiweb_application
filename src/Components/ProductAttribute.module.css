@@ -1,0 +1,105 @@
+.attribute {
+  text-transform: uppercase;
+  font-family: Roboto Condensed;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 18px;
+  align-content: center;
+}
+
+.attributelist {
+  margin: 1rem 0rem;
+}
+
+.attributeButton {
+  font-family: Source Sans Pro;
+  width: 63px;
+  height: 45px;
+  color: black;
+  border: 1px solid #1d1f22;
+  box-sizing: border-box;
+  background: white;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.buttonSelected {
+  font-family: Source Sans Pro;
+  width: 63px;
+  height: 45px;
+  border: none;
+  background-color: #1d1f22;
+  color: white;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 18px;
+  animation: bump 0.2s forwards ease-out;
+}
+
+.swatchButton {
+  font-family: Source Sans Pro;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  margin-right: 12px;
+  margin-bottom: 12px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 18px;
+  filter: saturate(75%);
+  align-self: center;
+}
+
+.swatchSelected {
+  font-family: Source Sans Pro;
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+  margin-bottom: 12px;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 18px;
+  border-radius: 100%;
+  align-self: center;
+  animation: enlarge 0.15s ease-out forwards;
+}
+
+/*---ANIMATIONS---*/
+
+@keyframes enlarge {
+  0% {
+    transform: scale(1);
+  }
+
+  80% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

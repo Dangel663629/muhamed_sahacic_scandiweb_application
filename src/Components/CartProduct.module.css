@@ -1,0 +1,175 @@
+.main {
+  min-height: 186px;
+  width: 100%;
+  border-top: 1px solid #e5e5e5;
+  padding: 1rem 0rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand {
+  margin: 0;
+  margin-bottom: 0.8rem;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 27px;
+}
+
+.name {
+  margin: 0;
+  margin-bottom: 1rem;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 27px;
+}
+
+.price {
+  margin: 0;
+  margin-bottom: 1rem;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 18px;
+}
+
+.attributeName {
+  margin: 0;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 45px;
+  color: rgb(158, 158, 158);
+}
+
+.wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.amount {
+  height: 185px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.amount button {
+  height: 45px;
+  width: 45px;
+  font-style: normal;
+  font-size: 25px;
+  background: white;
+  border: 1px solid black;
+}
+
+.amount p {
+  text-align: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 160%;
+}
+
+.gallery {
+  position: relative;
+  height: 185px;
+  width: 141px;
+  align-self: center;
+  margin-left: 12px;
+}
+
+.gallery:hover .galleryButton {
+  display: initial;
+}
+
+.galleryImage {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+}
+
+.buttonWrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.amount button:active,
+.galleryButton:active {
+  animation: bump 0.3s forwards ease-out;
+}
+
+.galleryButton {
+  display: none;
+  height: 4rem;
+  align-self: center;
+  background: transparent;
+  border: none;
+}
+
+.chevron {
+  -webkit-filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.7));
+}
+
+.attributes {
+  display: flex;
+  margin-top: 0.35rem;
+}
+
+.attribute,
+.attributeSelected {
+  height: 45px;
+  width: 63px;
+  margin: 0px 12px 12px 0px;
+  line-height: 150%;
+  border: none;
+  background: black;
+  color: white;
+  border: 1px solid black;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.attribute {
+  border: 1px solid black;
+  background: white;
+  color: black;
+}
+
+.swatch,
+.swatchSelected {
+  height: 45px;
+  width: 45px;
+  border: 1px solid black;
+  margin: 0px 8px 8px 0px;
+  border-radius: 100%;
+}
+
+.swatch {
+  border: 1px solid #c2c2c2;
+  box-shadow: inset 0px 0px 0px 100px rgba(255, 255, 255, 0.801);
+}
+
+/*---ANIMATIONS---*/
+
+@keyframes bump {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,59 @@
+.currencyMenu {
+  position: absolute;
+  right: 145px;
+  top: 80px;
+  width: 114px;
+  height: 280px;
+  box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+  z-index: 40;
+  transform-origin: top;
+  animation: unroll 0.2s forwards;
+}
+
+.currencyMenu button {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 160%;
+  text-align: left;
+  width: 100%;
+  height: 56px;
+  border: none;
+  background-color: white;
+  padding-left: 1rem;
+}
+
+.currencyMenu button:hover {
+  animation: hovercurrency 0.5s forwards ease-out;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 30;
+}
+
+/*---ANIMATIONS---*/
+
+@keyframes unroll {
+  0% {
+    transform: scale(1, 0);
+  }
+  80% {
+    transform: scale(1, 1.05);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes hovercurrency {
+  to {
+    background-color: rgb(243, 243, 243);
+    text-shadow: rgba(0, 0, 0, 0.19) 0px 0px 6px;
+  }
+}

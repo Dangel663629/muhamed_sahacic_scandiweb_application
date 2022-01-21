@@ -1,0 +1,27 @@
+.categoryButton {
+  font-family: "Raleway";
+  font-size: 16px;
+  padding: 1.8rem 1rem;
+  line-height: 80px;
+  background-color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.activeCategory {
+  color: rgb(94, 206, 123);
+  box-shadow: inset rgb(94, 206, 123) 0px -3px;
+}
+
+.categoryButton:hover {
+  animation: greenFade 0.25s forwards;
+}
+
+/*---ANIMATIONS---*/
+
+@keyframes greenFade {
+  to {
+    color: rgb(94, 206, 123);
+    box-shadow: inset rgb(94, 206, 123) 0px -3px;
+  }
+}

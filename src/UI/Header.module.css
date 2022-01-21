@@ -1,0 +1,126 @@
+.header {
+  position: relative;
+  z-index: 26;
+  background: white;
+  padding: 0rem 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.actions {
+  display: flex;
+}
+
+.currency,
+.cart {
+  border: none;
+  padding: 0rem 0.8rem;
+  background: white;
+  height: 3rem;
+}
+
+.cart {
+  position: relative;
+}
+
+.cartNumber {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  background: #1d1f22;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  color: white;
+}
+
+.cartNumber p {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 21px;
+  margin: 0;
+}
+
+.currencyWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.currencyText {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 160%;
+  margin: 0;
+  margin-right: 6px;
+  align-self: center;
+}
+
+.currency:hover .currencyText,
+.cart:hover {
+  animation: enlarge 0.2s forwards;
+}
+
+.currency:active .currencyText,
+.cart:active {
+  animation: bump 200ms ease-out;
+}
+
+.chevronFlip {
+  animation: flip 200ms ease-out forwards;
+}
+
+.bumpNumber {
+  animation: bumpNumber 150ms ease-out;
+}
+
+/*---ANIMATIONS---*/
+
+@keyframes flip {
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes enlarge {
+  to {
+    transform: scale(1.25);
+  }
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1.25);
+  }
+  10% {
+    transform: scale(0.85);
+  }
+  60% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes bumpNumber {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    transform: scale(0.9);
+  }
+  30% {
+    transform: scale(1.1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
