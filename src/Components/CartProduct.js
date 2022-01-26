@@ -2,6 +2,7 @@ import { Component } from "react";
 import classes from "./CartProduct.module.css";
 import ChevronRight from "../Resources/chevronright.svg";
 import ChevronLeft from "../Resources/chevronleft.svg";
+import PropTypes from "prop-types";
 
 class CartProduct extends Component {
   constructor(props) {
@@ -137,5 +138,12 @@ class CartProduct extends Component {
     );
   }
 }
+
+CartProduct.propTypes = {
+  product: PropTypes.object,
+  currencyIndex: PropTypes.number,
+  modifyCartAmountHandler: PropTypes.func,
+  index: PropTypes.number,
+};
 
 export default CartProduct;

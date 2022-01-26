@@ -1,5 +1,6 @@
 import { Component } from "react";
 import classes from "./MiniCartProduct.module.css";
+import PropTypes from "prop-types";
 
 class MiniCartProduct extends Component {
   render() {
@@ -25,6 +26,7 @@ class MiniCartProduct extends Component {
               </div>
             );
           })}
+          <p className={classes.attributeName}>{item.name}</p>
         </div>
       );
     });
@@ -75,5 +77,12 @@ class MiniCartProduct extends Component {
     );
   }
 }
+
+MiniCartProduct.propTypes = {
+  product: PropTypes.object,
+  currencyIndex: PropTypes.number,
+  index: PropTypes.number,
+  modifyCartAmountHandler: PropTypes.func,
+};
 
 export default MiniCartProduct;

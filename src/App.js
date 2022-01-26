@@ -1,14 +1,14 @@
 import { Component } from "react";
 import client from "./GraphQL/backend";
 import { getCategories } from "./GraphQL/queries";
-import Header from "./UI/Header";
 import { Route, Routes } from "react-router-dom";
+import Header from "./UI/Header";
 import ProductList from "./Components/ProductList";
 import CurrencyMenu from "./UI/CurrencyMenu";
 import ProductDetailedView from "./Components/ProductDetailedView";
-import classes from "./App.module.css";
 import MiniCart from "./UI/MiniCart";
 import Cart from "./Components/Cart";
+import "./App.module.css";
 
 class App extends Component {
   constructor(props) {

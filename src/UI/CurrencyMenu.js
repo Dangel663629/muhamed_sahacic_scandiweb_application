@@ -1,8 +1,8 @@
-import { Component } from "react";
-import { Fragment } from "react/cjs/react.production.min";
+import { Component, Fragment } from "react";
 import client from "../GraphQL/backend";
 import { getCurrencies } from "../GraphQL/queries";
 import classes from "./CurrencyMenu.module.css";
+import PropTypes from "prop-types";
 
 class CurrencyMenu extends Component {
   constructor(props) {
@@ -53,5 +53,11 @@ class CurrencyMenu extends Component {
     );
   }
 }
+
+CurrencyMenu.propTypes = {
+  currencyIndexHandler: PropTypes.func,
+  currencySymbolHandler: PropTypes.func,
+  currencyVisibilityHandler: PropTypes.func,
+};
 
 export default CurrencyMenu;

@@ -4,6 +4,7 @@ import classes from "./Header.module.css";
 import CartGreen from "../Resources/cartgreen.svg";
 import CartEmpty from "../Resources//cartempty.svg";
 import Chevron from "../Resources//currencychevron.svg";
+import PropTypes from "prop-types";
 
 class Header extends Component {
   constructor(props) {
@@ -34,6 +35,10 @@ class Header extends Component {
     const chevronClasses = `${classes.chevron} ${
       this.props.currencyMenuVisibility ? classes.chevronFlip : ""
     }`;
+
+    const cartAmount = this.props.cartArray.reduce((acc, item) => {
+      return acc + item.amount;
+    }, 0);
 
     const categories = this.props.categories.map((item) => {
       return (
@@ -74,7 +79,7 @@ class Header extends Component {
             <img src={CartEmpty} alt="cart"></img>
             {this.props.cartArray.length > 0 && (
               <div className={bmpClasses}>
-                <p>{this.props.cartArray.length}</p>
+                <p>{cartAmount}</p>
               </div>
             )}
           </button>
@@ -83,5 +88,15 @@ class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  currencyMenuVisibility: PropTypes.bool,
+  cartArray: PropTypes.array,
+  categories: PropTypes.array,
+  currentCategoryHandler: PropTypes.func,
+  currencyVisibilityHandler: PropTypes.func,
+  currencySymbol: PropTypes.string,
+  miniCartVisibilityHandler: PropTypes.func,
+};
 
 export default Header;

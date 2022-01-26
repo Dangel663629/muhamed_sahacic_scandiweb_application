@@ -2,6 +2,7 @@ import { Component } from "react";
 import classes from "./ProductBriefView.module.css";
 import CircleCart from "../Resources/circlecart.svg";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class ProductBriefView extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ class ProductBriefView extends Component {
     helperObject.amount = 1;
     delete helperObject.description;
     delete helperObject.inStock;
-    if (helperObject.hasOwnProperty("attributes")) {
+    if (Object.prototype.hasOwnProperty.call(helperObject, "attributes")) {
       helperObject.attributes.forEach((element) => {
         element.selectedItem = 0;
       });
@@ -57,6 +58,7 @@ class ProductBriefView extends Component {
             <img
               src={this.props.product.gallery[0]}
               className={classes.productImage}
+              alt="product"
             />
             {!this.props.product.inStock && (
               <div className={classes.stockOverlay}>
@@ -95,5 +97,12 @@ class ProductBriefView extends Component {
     );
   }
 }
+
+ProductBriefView.propTypes = {
+  product: PropTypes.object,
+  addItemToCartHandler: PropTypes.func,
+  detailedProductIdHandler: PropTypes.func,
+  currencyIndex: PropTypes.number,
+};
 
 export default ProductBriefView;

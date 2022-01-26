@@ -3,6 +3,7 @@ import client from "../GraphQL/backend";
 import { categoryByName } from "../GraphQL/queries";
 import ProductBriefView from "./ProductBriefView";
 import classes from "./ProductList.module.css";
+import PropTypes from "prop-types";
 
 class ProductList extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class ProductList extends Component {
     };
   }
 
-  componentDidMount() {
+  queryCall() {
     client
       .query({
         query: categoryByName,
@@ -26,29 +27,21 @@ class ProductList extends Component {
           return {
             ...prevState,
             productList: result.data.category.products,
-            isLoading: false,
           };
         });
       });
   }
 
+  componentDidMount() {
+    this.queryCall();
+    this.setState(() => {
+      return { isLoading: false };
+    });
+  }
+
   componentDidUpdate(prevProps) {
     if (prevProps.currentCategory !== this.props.currentCategory) {
-      client
-        .query({
-          query: categoryByName,
-          variables: {
-            titleString: this.props.currentCategory,
-          },
-        })
-        .then((result) => {
-          this.setState((prevState) => {
-            return {
-              ...prevState,
-              productList: result.data.category.products,
-            };
-          });
-        });
+      this.queryCall();
     }
   }
 
@@ -78,5 +71,12 @@ class ProductList extends Component {
     );
   }
 }
+
+ProductList.propTypes = {
+  currentCategory: PropTypes.string,
+  currencyIndex: PropTypes.number,
+  detailedProductIdHandler: PropTypes.func,
+  addItemToCartHandler: PropTypes.func,
+};
 
 export default ProductList;

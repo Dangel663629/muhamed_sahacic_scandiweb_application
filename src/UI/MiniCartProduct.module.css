@@ -1,5 +1,5 @@
 .main {
-  max-width: 293px;
+  min-width: 293px;
   min-height: 137px;
   display: flex;
   justify-content: space-between;
@@ -10,6 +10,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-right: 10px;
 }
 
 .info p {
@@ -63,7 +64,12 @@
   height: 137px;
   align-self: center;
   object-fit: scale-down;
-  margin-left: 10px;
+  margin: 0px 10px;
+}
+
+.attributeName {
+  margin-right: 1rem;
+  color: rgb(158, 158, 158);
 }
 
 .attributes {

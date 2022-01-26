@@ -1,9 +1,10 @@
-import { Component } from "react";
+import { Component, Fragment } from "react";
 import client from "../GraphQL/backend";
 import { productById } from "../GraphQL/queries";
 import classes from "./ProductDetailedView.module.css";
 import ProductAttribute from "./ProductAttribute";
-import { Fragment } from "react/cjs/react.production.min";
+import parse from "html-react-parser";
+import PropTypes from "prop-types";
 
 class ProductDetailedView extends Component {
   constructor(props) {
@@ -138,12 +139,9 @@ class ProductDetailedView extends Component {
                 >
                   <p>{buttonString}</p>
                 </button>
-                <div
-                  className={classes.parsedHtmlDescription}
-                  dangerouslySetInnerHTML={{
-                    __html: this.state.product.description,
-                  }}
-                ></div>
+                <div className={classes.parsedHtmlDescription}>
+                  {parse(this.state.product.description)}
+                </div>
               </div>
             </div>
           </div>
@@ -152,5 +150,11 @@ class ProductDetailedView extends Component {
     );
   }
 }
+
+ProductDetailedView.propTypes = {
+  detailedProductId: PropTypes.number,
+  addItemToCartHandler: PropTypes.func,
+  currencyIndex: PropTypes.number,
+};
 
 export default ProductDetailedView;

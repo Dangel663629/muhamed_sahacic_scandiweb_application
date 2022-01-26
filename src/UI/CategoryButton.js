@@ -1,6 +1,7 @@
 import { Component } from "react";
 import classes from "./CategoryButton.module.css";
 import { NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class CategoryButton extends Component {
   navClickHandler() {
@@ -28,5 +29,10 @@ class CategoryButton extends Component {
     );
   }
 }
+
+CategoryButton.propTypes = {
+  currentCategoryHandler: PropTypes.func,
+  category: PropTypes.object,
+};
 
 export default CategoryButton;

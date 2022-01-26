@@ -1,6 +1,7 @@
 import { Component, Fragment } from "react";
 import classes from "./Cart.module.css";
 import CartProduct from "./CartProduct";
+import PropTypes from "prop-types";
 
 class Cart extends Component {
   render() {
@@ -27,5 +28,11 @@ class Cart extends Component {
     );
   }
 }
+
+Cart.propTypes = {
+  cartArray: PropTypes.array,
+  currencyIndex: PropTypes.number,
+  modifyCartAmountHandler: PropTypes.func,
+};
 
 export default Cart;

@@ -26,11 +26,12 @@
 
 .cartNumber {
   position: absolute;
-  top: 3px;
-  right: 3px;
+  top: 0px;
+  right: 0px;
+  padding: 1px;
   background: #1d1f22;
-  width: 20px;
-  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
   border-radius: 100%;
   color: white;
 }

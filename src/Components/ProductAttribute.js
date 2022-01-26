@@ -1,5 +1,6 @@
 import { Component } from "react";
 import classes from "./ProductAttribute.module.css";
+import PropTypes from "prop-types";
 
 class ProductAttribute extends Component {
   constructor(props) {
@@ -56,5 +57,10 @@ class ProductAttribute extends Component {
     );
   }
 }
+
+ProductAttribute.propTypes = {
+  attributesArrayHandler: PropTypes.func,
+  attribute: PropTypes.array,
+};
 
 export default ProductAttribute;

@@ -2,12 +2,9 @@ import { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import classes from "./MiniCart.module.css";
 import MiniCartProduct from "./MiniCartProduct";
+import PropTypes from "prop-types";
 
 class MiniCart extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const products = this.props.cartArray.map((product, index) => {
       return (
@@ -77,5 +74,14 @@ class MiniCart extends Component {
     );
   }
 }
+
+MiniCart.propTypes = {
+  cartArray: PropTypes.array,
+  currencyIndex: PropTypes.number,
+  modifyCartAmountHandler: PropTypes.func,
+  miniCartVisibility: PropTypes.bool,
+  currencySymbol: PropTypes.string,
+  miniCartVisibilityHandler: PropTypes.func,
+};
 
 export default MiniCart;

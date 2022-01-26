@@ -1,29 +1,22 @@
 .main {
-  height: 511px;
   display: flex;
   padding: 5rem 0rem;
   justify-content: center;
 }
 
 .galleryMenu {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(4, auto);
   height: 511px;
-  width: 120px;
-  overflow: hidden;
-}
-
-.galleryMenu:hover {
-  overflow-y: overlay;
+  max-width: 240px;
 }
 
 .previewImage {
-  padding-top: 5px;
-  padding-left: 5px;
   width: 80px;
   height: 80px;
   object-fit: scale-down;
-  margin: 0px 40px 40px 0px;
+  margin: 1rem 0.5rem;
 }
 
 .previewImage:hover {
@@ -50,11 +43,6 @@
   width: 292px;
   padding: 5px;
   padding-right: 12px;
-  overflow-y: hidden;
-}
-
-.info:hover {
-  overflow-y: overlay;
 }
 
 .info h1 {
@@ -125,6 +113,7 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 159.96%;
+  padding-bottom: 2rem;
 }
 
 /*---ANIMATIONS---*/
