@@ -10,15 +10,58 @@ export const getCurrencies = gql`
 `;
 
 export const getCategories = gql`
-  query GetCategories {
+  query getCategories {
     categories {
+      name
+    }
+  }
+`;
+
+export const productById = gql`
+  query productById($searchId: String!) {
+    product(id: $searchId) {
+      id
+      name
+      brand
+      gallery
+      prices {
+        currency {
+          symbol
+        }
+        amount
+      }
+      inStock
+      description
+      attributes {
+        id
+        name
+        type
+        items {
+          displayValue
+          value
+          id
+        }
+      }
+    }
+  }
+`;
+
+export const categoryByName = gql`
+  query categoryByName($titleString: String!) {
+    category(input: { title: $titleString }) {
       name
       products {
         id
+        brand
         name
         inStock
         gallery
-        description
+        prices {
+          currency {
+            symbol
+          }
+          amount
+        }
         attributes {
           id
           name
@@ -29,14 +72,6 @@ export const getCategories = gql`
             id
           }
         }
-        prices {
-          currency {
-            label
-            symbol
-          }
-          amount
-        }
-        brand
       }
     }
   }

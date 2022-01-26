@@ -35,9 +35,13 @@ class Header extends Component {
       this.props.currencyMenuVisibility ? classes.chevronFlip : ""
     }`;
 
-    const categories = this.props.categories.map((item, index) => {
+    const categories = this.props.categories.map((item) => {
       return (
-        <CategoryButton category={item.name} key={item.name} index={index} />
+        <CategoryButton
+          currentCategoryHandler={this.props.currentCategoryHandler}
+          category={item.name}
+          key={item.name}
+        />
       );
     });
 

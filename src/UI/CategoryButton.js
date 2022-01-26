@@ -3,11 +3,8 @@ import classes from "./CategoryButton.module.css";
 import { NavLink } from "react-router-dom";
 
 class CategoryButton extends Component {
-  navLinkClickHandler() {
-    let navigateHelper = `/${this.props.category}`;
-    if (navigateHelper === "/all") {
-      navigateHelper = "/";
-    }
+  navClickHandler() {
+    this.props.currentCategoryHandler(this.props.category);
   }
 
   render() {
@@ -23,9 +20,8 @@ class CategoryButton extends Component {
             ? `${classes.categoryButton} ${classes.activeCategory}`
             : classes.categoryButton
         }
-        onClick={this.navLinkClickHandler.bind(this)}
         to={navigateHelper}
-        style={{ color: "inherit", textDecoration: "inherit" }}
+        onClick={this.navClickHandler.bind(this)}
       >
         {this.props.category}
       </NavLink>

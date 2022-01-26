@@ -15,20 +15,25 @@ class App extends Component {
     const localStorageCartArray = localStorage.getItem("cartArray");
     const localStorageCurrencyIndex = localStorage.getItem("currencyIndex");
     const localStorageCurrencySymbol = localStorage.getItem("currencySymbol");
-    const localStorageDetailedProduct = localStorage.getItem("detailedProduct");
+    const localStorageCurrentCategory = localStorage.getItem("currentCategory");
+    const localStorageDetailedProductId =
+      localStorage.getItem("detailedProductId");
 
     super(props);
     this.state = {
       isLoading: true,
       categories: [],
+      currentCategory: localStorageCurrentCategory
+        ? localStorageCurrentCategory
+        : "all",
+      detailedProductId: localStorageDetailedProductId
+        ? localStorageDetailedProductId
+        : "",
       currencyMenuVisibility: false,
       currencyIndex: localStorageCurrencyIndex ? localStorageCurrencyIndex : 0,
       currencySymbol: localStorageCurrencySymbol
         ? localStorageCurrencySymbol
         : "$",
-      detailedProduct: localStorageDetailedProduct
-        ? JSON.parse(localStorageDetailedProduct)
-        : {},
       miniCartVisibility: false,
       cartArray: localStorageCartArray ? JSON.parse(localStorageCartArray) : [],
     };
@@ -45,11 +50,11 @@ class App extends Component {
       localStorage.setItem("currencyIndex", this.state.currencyIndex);
       localStorage.setItem("currencySymbol", this.state.currencySymbol);
     }
-    if (prevState.detailedProduct !== this.state.detailedProduct) {
-      localStorage.setItem(
-        "detailedProduct",
-        JSON.stringify(this.state.detailedProduct)
-      );
+    if (prevState.detailedProductId !== this.state.detailedProductId) {
+      localStorage.setItem("detailedProductId", this.state.detailedProductId);
+    }
+    if (prevState.currentCategory !== this.state.currentCategory) {
+      localStorage.setItem("currentCategory", this.state.currentCategory);
     }
   }
 
@@ -63,10 +68,28 @@ class App extends Component {
           return {
             ...prevState,
             categories: result.data.categories,
+            isLoading: false,
           };
         });
-        this.setState({ isLoading: false });
       });
+  }
+
+  currentCategoryHandler(category) {
+    this.setState((prevState) => {
+      return {
+        ...prevState,
+        currentCategory: category,
+      };
+    });
+  }
+
+  detailedProductIdHandler(id) {
+    this.setState((prevState) => {
+      return {
+        ...prevState,
+        detailedProductId: id,
+      };
+    });
   }
 
   currencyVisibilityHandler() {
@@ -93,12 +116,6 @@ class App extends Component {
         ...prevState,
         currencySymbol: newSymbol,
       };
-    });
-  }
-
-  detailedViewHandler(product) {
-    this.setState((prevState) => {
-      return { ...prevState, detailedProduct: product };
     });
   }
 
@@ -159,6 +176,7 @@ class App extends Component {
       <div>
         <Header
           categories={this.state.categories}
+          currentCategoryHandler={this.currentCategoryHandler.bind(this)}
           currencyVisibilityHandler={this.currencyVisibilityHandler.bind(this)}
           currencyMenuVisibility={this.state.currencyMenuVisibility}
           currencySymbol={this.state.currencySymbol}
@@ -186,63 +204,43 @@ class App extends Component {
           <Route
             path="/"
             element={
-              <div>
-                <h1>All</h1>
-                {this.state.isLoading ? (
-                  <h2>Loading...</h2>
-                ) : (
-                  <ProductList
-                    list={this.state.categories[0].products}
-                    currencyIndex={this.state.currencyIndex}
-                    detailedViewHandler={this.detailedViewHandler.bind(this)}
-                    addItemToCartHandler={this.addItemToCartHandler.bind(this)}
-                  />
-                )}
-              </div>
+              this.state.isLoading ? (
+                <h2>Loading category...</h2>
+              ) : (
+                <ProductList
+                  currentCategory="all"
+                  detailedProductIdHandler={this.detailedProductIdHandler.bind(
+                    this
+                  )}
+                  currencyIndex={this.state.currencyIndex}
+                  addItemToCartHandler={this.addItemToCartHandler.bind(this)}
+                />
+              )
             }
           />
           <Route
-            path="/clothes"
+            path="/:category"
             element={
-              <div>
-                <h1>Clothes</h1>
-                {this.state.isLoading ? (
-                  <h2>Loading...</h2>
-                ) : (
-                  <ProductList
-                    list={this.state.categories[1].products}
-                    currencyIndex={this.state.currencyIndex}
-                    detailedViewHandler={this.detailedViewHandler.bind(this)}
-                    addItemToCartHandler={this.addItemToCartHandler.bind(this)}
-                  />
-                )}
-              </div>
-            }
-          />
-          <Route
-            path="/tech"
-            element={
-              <div>
-                <h1>Tech</h1>
-                {this.state.isLoading ? (
-                  <h2>Loading...</h2>
-                ) : (
-                  <ProductList
-                    list={this.state.categories[2].products}
-                    currencyIndex={this.state.currencyIndex}
-                    detailedViewHandler={this.detailedViewHandler.bind(this)}
-                    addItemToCartHandler={this.addItemToCartHandler.bind(this)}
-                  />
-                )}
-              </div>
+              this.state.isLoading ? (
+                <h2>Loading category...</h2>
+              ) : (
+                <ProductList
+                  currentCategory={this.state.currentCategory}
+                  detailedProductIdHandler={this.detailedProductIdHandler.bind(
+                    this
+                  )}
+                  currencyIndex={this.state.currencyIndex}
+                  addItemToCartHandler={this.addItemToCartHandler.bind(this)}
+                />
+              )
             }
           />
           <Route
             path="/product/:id"
             element={
               <ProductDetailedView
-                product={this.state.detailedProduct}
                 currencyIndex={this.state.currencyIndex}
+                detailedProductId={this.state.detailedProductId}
                 addItemToCartHandler={this.addItemToCartHandler.bind(this)}
               />
             }

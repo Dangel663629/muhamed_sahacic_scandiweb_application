@@ -39,19 +39,15 @@ class ProductBriefView extends Component {
     this.props.addItemToCartHandler(helperObject);
   }
 
-  productObjectLifter() {
-    this.props.detailedViewHandler(this.props.product);
+  productIdLifter() {
+    this.props.detailedProductIdHandler(this.props.product.id);
   }
 
   render() {
     const dynamicUrl = `/product/${this.props.product.id}`;
 
     return (
-      <Link
-        to={dynamicUrl}
-        style={{ color: "inherit", textDecoration: "inherit" }}
-        onClick={this.productObjectLifter.bind(this)}
-      >
+      <Link to={dynamicUrl} onClick={this.productIdLifter.bind(this)}>
         <div
           className={classes.body}
           onMouseEnter={this.showCartButton.bind(this)}

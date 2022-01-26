@@ -40,7 +40,7 @@ class CartProduct extends Component {
   }
 
   render() {
-    const attributes = this.props.product.attributes.map((item, index) => {
+    const attributes = this.props.product.attributes?.map((item, index) => {
       return (
         <div className={classes.attributes} key={index}>
           {item.items.map((lowerItem, index) => {
@@ -58,7 +58,7 @@ class CartProduct extends Component {
                 style={{ backgroundColor: lowerItem.displayValue }}
                 key={lowerItem.id}
               >
-                {item.type !== "swatch" && lowerItem.displayValue}
+                {item.type !== "swatch" && lowerItem.value}
               </div>
             );
           })}

@@ -27,7 +27,7 @@ class ProductAttribute extends Component {
   }
 
   render() {
-    const attributes = this.props.attribute.items.map((item, index) => {
+    const attributes = this.props.attribute.items?.map((item, index) => {
       return (
         <button
           className={
@@ -43,7 +43,7 @@ class ProductAttribute extends Component {
           onClick={() => this.selectedIndexHandler(index)}
           key={index}
         >
-          {this.props.attribute.type !== "swatch" && item.displayValue}
+          {this.props.attribute.type !== "swatch" && item.value}
         </button>
       );
     });
