@@ -1,4 +1,5 @@
 import { Component, Fragment } from "react";
+import { Navigate } from "react-router-dom";
 import classes from "./Cart.module.css";
 import CartProduct from "./CartProduct";
 import PropTypes from "prop-types";
@@ -24,6 +25,7 @@ class Cart extends Component {
         <h1 className={classes.title}>Cart</h1>
         {this.props.cartArray.length < 1 && <h2>Cart is empty...</h2>}
         <div className={classes.main}>{products}</div>
+        {this.props.cartArray.length === 0 && <Navigate to="/previous" />}
       </Fragment>
     );
   }

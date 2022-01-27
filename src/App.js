@@ -1,7 +1,7 @@
 import { Component } from "react";
 import client from "./GraphQL/backend";
 import { getCategories } from "./GraphQL/queries";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Header from "./UI/Header";
 import ProductList from "./Components/ProductList";
 import CurrencyMenu from "./UI/CurrencyMenu";
@@ -201,24 +201,9 @@ class App extends Component {
           modifyCartAmountHandler={this.modifyCartAmountHandler.bind(this)}
         />
         <Routes>
+          <Route path="*" element={<Navigate to="/all" />} />
           <Route
-            path="/"
-            element={
-              this.state.isLoading ? (
-                <h2>Loading category...</h2>
-              ) : (
-                <ProductList
-                  currentCategory="all"
-                  detailedProductIdHandler={this.detailedProductIdHandler.bind(
-                    this
-                  )}
-                  currencyIndex={this.state.currencyIndex}
-                  addItemToCartHandler={this.addItemToCartHandler.bind(this)}
-                />
-              )
-            }
-          />
-          <Route
+            exact
             path="/:category"
             element={
               this.state.isLoading ? (
