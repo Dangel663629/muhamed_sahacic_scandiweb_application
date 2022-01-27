@@ -15,7 +15,7 @@ class Cart extends Component {
             this
           )}
           index={index}
-          key={index}
+          key={product.id}
         />
       );
     });
